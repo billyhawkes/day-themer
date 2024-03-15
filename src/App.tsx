@@ -94,7 +94,7 @@ const App = () => {
 						}}
 						class="absolute h-[20px] w-full flex items-center"
 					>
-						<p class="w-14">{hour[1]}</p>
+						<p class="w-16 pl-2">{hour[1]}</p>
 						<div class="h-0.5 w-full bg-gray-700" />
 					</div>
 				)}
@@ -102,7 +102,7 @@ const App = () => {
 			<For each={activities}>
 				{(activity) => (
 					<div
-						class="absolute w-full pl-14 p-1"
+						class="absolute w-full pl-16 p-1"
 						style={{
 							height: `${(activity.end - activity.start) * 80}px`,
 							top: `${activity.start * 80}px`,
