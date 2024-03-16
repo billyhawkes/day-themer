@@ -19,9 +19,9 @@
 		},
 		"windows": [
 			{
-				"title": "day-themer",
-				"width": 800,
-				"height": 600
+				"title": "Day Themer",
+				"width": 400,
+				"height": 800
 			}
 		],
 		"security": {
