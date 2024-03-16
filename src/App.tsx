@@ -1,4 +1,4 @@
-import { For } from "solid-js";
+import { For, createSignal } from "solid-js";
 import "./App.css";
 import { cn } from "./utils/cn";
 
@@ -82,7 +82,14 @@ const hours: Record<number, string> = {
 };
 
 const App = () => {
-	const date = new Date();
+	const [date, setDate] = createSignal(new Date());
+
+	setInterval(() => {
+		setDate(new Date());
+	}, 1000);
+
+	const currentHour = () => date().getHours();
+	const currentMinute = () => date().getMinutes();
 
 	return (
 		<main class="max-w-screen flex flex-col">
@@ -107,7 +114,7 @@ const App = () => {
 							height: `${(activity.end - activity.start) * 80}px`,
 							top: `${activity.start * 80}px`,
 							opacity:
-								activity.start < date.getHours() && activity.end > date.getHours()
+								activity.start < currentHour() && activity.end > currentHour()
 									? 1
 									: 0.7,
 						}}
@@ -121,7 +128,7 @@ const App = () => {
 			<span
 				class="absolute bg-red-500 w-full h-2 z-100 rounded"
 				style={{
-					top: `${(date.getHours() + date.getMinutes() / 60) * 80}px`,
+					top: `${(currentHour() + currentMinute() / 60) * 80}px`,
 				}}
 			/>
 		</main>
